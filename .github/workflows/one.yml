@@ -3,7 +3,7 @@ name: Copy Code to Test Repository
 on:
   push:
     branches:
-      - main
+      - main  # Adjust this branch name to your main development branch
 
 jobs:
   copy-code:
@@ -15,10 +15,9 @@ jobs:
 
       - name: Copy code to test repository
         run: |
-          git clone https://github.com/Tanya-DSU/ODOP  
-          cd ODOP
-          git clone https://github.com/Tanya-DSU/ODOP-Test 
+          git clone https://github.com/Tanya-DSU/ODOP-Test.git  
           cd ODOP-Test
+          unzip -q ../code.zip  
           git add .
           git commit -m "Copied code from dev repository"
-          git push
+          git push origin main  
