@@ -1,23 +1,27 @@
-name: Copy Files to Target Repository
+name: My Workflow
 
 on:
   push:
     branches:
-      - main  # Change this to the branch that triggers the workflow
+      - main
 
 jobs:
-  copy-files:
+  my-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source repository
+      - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          repository: Tanya-DSU /ODOP
+
+      - name: Use the PAT for authentication
+        run: |
+          # Set up git configuration with the PAT
+          git config --global user.email "eng21ct0044@dsu.edu.in"
+          git config --global user.name "Tanya-DSU"
+          git remote set-url origin "https://$PAT_ACCESS_TOKEN@github.com/Tanya-DSU/ODOP.git"
+
       - name: Copy files
         run: |
-          # Specify the copy or sync commands here
-          # For example, to copy all files and directories recursively:
           cp -r https://github.com/Tanya-DSU/ODOP https://github.com/Tanya-DSU/ODOP-Test
         working-directory: ${{ github.workspace }}
 
