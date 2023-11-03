@@ -64,11 +64,18 @@ flowchart TD;
 ###Consumer POV
 
 ```mermaid
-graph TD;
-    (Visit the Website)-->(Browse through the districts);
-    (Browse through the districts)-->(Check out authentic products of each district);
-    (Check out authentic products of each district)-->(View product image and detail by various producers);
-    (View product image and detail by various producers)-->(Compare the products from different sellers);
-    (Compare the products from different sellers)-->(Contact the seller);
-    (Contact the seller)-->((Complete));
+flowchart TD;
+    setup-dev(Visit the Website)
+    bci(Browse through the districts)
+    bci-search(Check out authentic products of each district)
+    bci-detail(View product image and detail by various producers)
+    bci-compare(Compare the products from different sellers)
+    bci-contact(Contact the seller)
+    bci-end((Complete))
+    setup-dev-->bci
+    bci-->bci-search
+    bci-search-->bci-detail
+    bci-detail-->bci-compare
+    bci-compare-->bci-contact
+    bci-contact-->bci-end
 ```
