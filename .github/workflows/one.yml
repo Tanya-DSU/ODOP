@@ -22,7 +22,7 @@ jobs:
 
       - name: Copy files
         run: |
-          cp -r https://github.com/Tanya-DSU/ODOP https://github.com/Tanya-DSU/ODOP-Test
+          cp -r https://github.com/Tanya-DSU/ODOP-Test https://github.com/Tanya-DSU/ODOP
         working-directory: ${{ github.workspace }}
 
       - name: Commit and push to target repository
