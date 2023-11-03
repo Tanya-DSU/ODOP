@@ -13,10 +13,10 @@ jobs:
 
       - name: Copy code to test repository
         run: |
-          git clone https://github.com/Tanya-DSU/ODOP
+          git clone github.com/Tanya-DSU/ODOP
           cd ODOP
           git archive --format=zip HEAD -o code.zip
-          git clone https://github.com/Tanya-DSU/ODOP-Test
+          git clone github.com/Tanya-DSU/ODOP-Test
           cd ODOP-Test
           unzip ../ODOP/code.zip
           git add .
