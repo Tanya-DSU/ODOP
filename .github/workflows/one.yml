@@ -1,23 +1,30 @@
-name: Copy Code to Test Repository
+name: Copy Files to Target Repository
 
 on:
   push:
     branches:
-      - main  # Adjust this branch name to your main development branch
+      - main  # Change this to the branch that triggers the workflow
 
 jobs:
-  copy-code:
+  copy-files:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout source repository
         uses: actions/checkout@v2
-
-      - name: Copy code to test repository
+        with:
+          repository: https://github.com/Tanya-DSU/ODOP
+      - name: Copy files
         run: |
-          git clone https://github.com/Tanya-DSU/ODOP-Test.git  
-          cd ODOP-Test
-          unzip -q ../code.zip  
+          # Specify the copy or sync commands here
+          # For example, to copy all files and directories recursively:
+          cp -r https://github.com/Tanya-DSU/ODOP https://github.com/Tanya-DSU/ODOP-Test
+        working-directory: ${{ github.workspace }}
+
+      - name: Commit and push to target repository
+        run: |
+          git config --global user.email "eng21ct0044@dsu.edu.in"
+          git config --global user.name "Tanya-DSU"
           git add .
-          git commit -m "Copied code from dev repository"
-          git push origin main  
+          git commit -m "Copy files from source repository"
+          git push --force "https://github.com/Tanya-DSU/ODOP-Test" main  # Replace with the target repository's URL and branch
