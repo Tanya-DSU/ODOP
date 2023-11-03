@@ -1,34 +1,28 @@
-name: My Workflow
+name: Push to Another Repository
 
 on:
   push:
     branches:
-      - main
+      - main  # Replace with the source branch you want to trigger the workflow
 
 jobs:
-  my-job:
+  push_code:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Source Repository
         uses: actions/checkout@v2
 
-      - name: Use the PAT for authentication
+      - name: Push to Target Repository
         run: |
-          # Set up git configuration with the PAT
-          git config --global user.email "eng21ct0044@dsu.edu.in"
+          # Set up Git user
           git config --global user.name "Tanya-DSU"
-          git remote set-url origin "https://$PAT_ACCESS_TOKEN@github.com/Tanya-DSU/ODOP.git"
+          git config --global user.email "eng21ct@dsu.edu.in"
 
-      - name: Copy files
-        run: |
-          cp -r https://github.com/Tanya-DSU/ODOP-Test https://github.com/Tanya-DSU/ODOP
-        working-directory: ${{ github.workspace }}
+          # Add the target repository as a remote
+          git remote add target-repo https://github.com/Tanya-DSU/ODOP-Test
+          # Push the code to the target repository
+          git push target-repo main:main  # Replace 'main' with the appropriate branch
 
-      - name: Commit and push to target repository
-        run: |
-          git config --global user.email "eng21ct0044@dsu.edu.in"
-          git config --global user.name "Tanya-DSU"
-          git add .
-          git commit -m "Copy files from source repository"
-          git push --force "https://github.com/Tanya-DSU/ODOP-Test" main  # Replace with the target repository's URL and branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
