@@ -17,7 +17,7 @@ jobs:
         run: |
           # Set up Git user
           git config --global user.name "Tanya-DSU"
-          git config --global user.email "eng21ct@dsu.edu.in"
+          git config --global user.email "141429948+Tanya-DSU@users.noreply.github.com"
 
           # Add the target repository as a remote
           git remote add target-repo https://github.com/Tanya-DSU/ODOP-Test
