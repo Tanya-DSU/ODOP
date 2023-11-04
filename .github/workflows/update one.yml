@@ -28,7 +28,6 @@ jobs:
 
           # Add the target repository as a remote
           # Push the code to the target repository
-          git fetch --all --prune
           git push --force target-repo main # Replace 'main' with the appropriate branch
 
           env:
