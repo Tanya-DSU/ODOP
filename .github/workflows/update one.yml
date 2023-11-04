@@ -29,3 +29,7 @@ jobs:
           # Add the target repository as a remote
           # Push the code to the target repository
           git push --force target-repo main:after-main  # Replace 'main' with the appropriate branch
+
+          env:
+          GITHUB_TOKEN: ${{ secrets.PAT_ACCESS_TOKEN }}
+          
