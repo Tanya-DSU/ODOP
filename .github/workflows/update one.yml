@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout Source Repository
         uses: actions/checkout@v2
+        with:
+          ref: main
+          token: ${{ secrets.PAT_ACCESS_TOKEN }}
 
       - name: Push to Target Repository
         run: |
