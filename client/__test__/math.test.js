@@ -1,5 +1,5 @@
 // math.test.js
-const add = require('./src/math'); // Import the function you want to test
+const add = require('../src/math'); // Import the function you want to test
 
 describe('add function', () => {
   it('should add two numbers correctly', () => {
