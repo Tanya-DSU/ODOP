@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main  # Replace with the source branch you want to trigger the workflow
-
+permissions: write-all
 jobs:
   push_code:
     runs-on: ubuntu-latest
