@@ -25,4 +25,4 @@ jobs:
           git push --force target-repo main:main  # Replace 'main' with the appropriate branch
 
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_ACCESS_TOKEN }}
